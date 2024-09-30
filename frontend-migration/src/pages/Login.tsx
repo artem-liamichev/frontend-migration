@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,11 +12,14 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { PasswordInput } from "@/components/ui/password-input";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/rarus-logo-vertical.png";
 import { LanguageSwitcher } from "@/components/ui/language-switcher.tsx";
 export default function LoginAccount() {
   const navigate = useNavigate();
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [password, setPassword] = useState("");
   const handleLogin = () => {
     // Here you would typically add your login logic
     // For now, let's just navigate to the MainPage on button click
@@ -23,7 +27,9 @@ export default function LoginAccount() {
   };
   return (
     <div className=" relative flex flex-col justify-center items-center min-h-screen overflow-hidden">
-      <LanguageSwitcher />
+      <div className="absolute top-4 right-0">
+        <LanguageSwitcher />
+      </div>
       <div className="w-full m-auto lg:max-w-lg">
         <div className="flex ">
           <img alt="logo" className="h-30 m-auto" src={logo} />
@@ -34,10 +40,15 @@ export default function LoginAccount() {
           </CardHeader>
           <CardContent className="grid gap-4">
             <div className="grid gap-2">
-              <Input id="email" type="email" placeholder="" />
+              <Input id="email" type="email" placeholder="Email" />
             </div>
             <div className="grid gap-2">
-              <Input id="password" type="password" />
+              <PasswordInput
+                id="current_password"
+                value={currentPassword}
+                onChange={(e) => setCurrentPassword(e.target.value)}
+                autoComplete="current-password"
+              />
             </div>
           </CardContent>
           <CardFooter className="flex flex-col">

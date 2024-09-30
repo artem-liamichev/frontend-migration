@@ -16,16 +16,16 @@ export function LanguageSwitcher() {
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="flex items-center gap-2">
               <GlobeIcon className="h-5 w-5" />
-              <span>EN</span>
+              <span>ES</span>
               <ChevronDownIcon className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-48">
             <DropdownMenuItem className="flex items-center justify-between">
-              <span>English</span>
+              <span>Español</span>
               <CheckIcon className="h-5 w-5" />
             </DropdownMenuItem>
-            <DropdownMenuItem>Español</DropdownMenuItem>
+            <DropdownMenuItem>English</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

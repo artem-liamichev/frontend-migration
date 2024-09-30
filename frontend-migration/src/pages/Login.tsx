@@ -19,7 +19,6 @@ import { LanguageSwitcher } from "@/components/ui/language-switcher.tsx";
 export default function LoginAccount() {
   const navigate = useNavigate();
   const [currentPassword, setCurrentPassword] = useState("");
-  const [password, setPassword] = useState("");
   const handleLogin = () => {
     // Here you would typically add your login logic
     // For now, let's just navigate to the MainPage on button click

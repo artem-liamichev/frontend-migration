@@ -2,16 +2,13 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { LanguageSwitcher } from "@/components/ui/language-switcher.tsx";
 import { useNavigate } from "react-router-dom";
+import { PasswordInput } from "@/components/ui/password-input";
 
-export default function ResetPassswordRequest() {
-  const navigate = useNavigate();
+export default function ResetPassswordConfirmation() {
   const [success, setSuccess] = useState(false);
-  const handleLogin = () => {
-    navigate("/login");
-  };
+
   console.log("success:", success);
   const handleRecoverPassword = () => {
     setSuccess(true);
@@ -26,9 +23,8 @@ export default function ResetPassswordRequest() {
           <div className="flex w-[312px] text-center flex-col justify-center items-center min-h-screen overflow-hidden">
             <p className="text-green-600">
               {" "}
-              Se envió un correo electrónico a la dirección de correo
-              electrónico que especificó. Haga clic en el enlace para
-              restablecer su contraseña.{" "}
+              La contraseña se ha cambiado correctamente, ahora puede iniciar
+              sesión.{" "}
             </p>
             <div className="mt-4 text-sm text-center ">
               <Link to="/login" className="text-[#77858C] ">
@@ -40,12 +36,15 @@ export default function ResetPassswordRequest() {
           <Card className="min-w-[312px]">
             <CardContent className="grid gap-4">
               <div className="grid gap-2">
-                <Input id="email" type="email" placeholder="Email" />
+                <PasswordInput
+                  id="current_password"
+                  autoComplete="current-password"
+                />
               </div>
             </CardContent>
             <CardFooter className="flex flex-col">
               <Button className="w-full" onClick={handleRecoverPassword}>
-                Recuperar contraseña
+                Guardar contraseña
               </Button>
               <div className="mt-4 text-sm text-center ">
                 <Link to="/login" className="text-[#77858C] ">

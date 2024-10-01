@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Registration from "./pages/Registration";
 import Root from "./routes/root";
 import ResetPasswordRequest from "./pages/ResetPassswordRequest";
+import ResetPasswordConfirmation from "./pages/ResetPassswordConfirmation";
 
 const router = createBrowserRouter([
   {
@@ -36,8 +37,8 @@ const router = createBrowserRouter([
     element: <ResetPasswordRequest />,
   },
   {
-    path: "contacts/:contactId",
-    element: <Contact />,
+    path: "/reset-password",
+    element: <ResetPasswordConfirmation />,
   },
 ]);
 

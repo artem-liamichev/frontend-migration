@@ -2,7 +2,6 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import Contact from "./routes/contact";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Login from "./pages/Login";
@@ -10,6 +9,7 @@ import Registration from "./pages/Registration";
 import Root from "./routes/root";
 import ResetPasswordRequest from "./pages/ResetPassswordRequest";
 import ResetPasswordConfirmation from "./pages/ResetPassswordConfirmation";
+import FirstOnboarding from "./components/FirstOnboarding";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +39,10 @@ const router = createBrowserRouter([
   {
     path: "/reset-password",
     element: <ResetPasswordConfirmation />,
+  },
+  {
+    path: "/first",
+    element: <FirstOnboarding />,
   },
 ]);
 

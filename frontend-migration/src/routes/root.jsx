@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 export default function Root() {
   return (
     <>
@@ -16,6 +17,7 @@ export default function Root() {
             <div className="sr-only" aria-live="polite"></div>
           </form>
           <form method="post">
+            <Link to="/first">first</Link>
             <button type="submit">New</button>
           </form>
         </div>

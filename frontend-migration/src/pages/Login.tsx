@@ -16,7 +16,10 @@ import { PasswordInput } from "@/components/ui/password-input";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/rarus-logo-vertical.png";
 import { LanguageSwitcher } from "@/components/ui/language-switcher.tsx";
+import useStore from "../stores/store";
+import FirstOnboarding from "@/pages/FirstOnboarding";
 export default function LoginAccount() {
+  const { firstOnboardingComplited } = useStore();
   const navigate = useNavigate();
   const [currentPassword, setCurrentPassword] = useState("");
   const handleLogin = () => {
@@ -25,46 +28,55 @@ export default function LoginAccount() {
     navigate("/main");
   };
   return (
-    <div className=" relative flex flex-col justify-center items-center min-h-screen overflow-hidden">
-      <div className="absolute top-4 right-0">
-        <LanguageSwitcher />
-      </div>
-      <div className="w-full m-auto lg:max-w-lg">
-        <div className="flex ">
-          <img alt="logo" className="h-30 m-auto" src={logo} />
+    <>
+      {!firstOnboardingComplited ? (
+        <FirstOnboarding />
+      ) : (
+        <div className=" relative flex flex-col justify-center items-center min-h-screen overflow-hidden">
+          <div className="absolute top-4 right-0">
+            <LanguageSwitcher />
+          </div>
+          <div className="w-full m-auto lg:max-w-lg">
+            <div className="flex ">
+              <img alt="logo" className="h-30 m-auto" src={logo} />
+            </div>
+            <Card className="min-w-[312px]">
+              <CardHeader className="space-y-1">
+                <CardTitle className="text-lg text-center">Log in</CardTitle>
+              </CardHeader>
+              <CardContent className="grid gap-4">
+                <div className="grid gap-2">
+                  <Input id="email" type="email" placeholder="Email" />
+                </div>
+                <div className="grid gap-2">
+                  <PasswordInput
+                    id="current_password"
+                    value={currentPassword}
+                    onChange={(e) => setCurrentPassword(e.target.value)}
+                    autoComplete="current-password"
+                  />
+                </div>
+              </CardContent>
+              <CardFooter className="flex flex-col">
+                <Button className="w-full" onClick={handleLogin}>
+                  Login
+                </Button>
+                <div className="mt-4 text-sm text-center ">
+                  <Link
+                    to="/reset-password-request"
+                    className="text-[#77858C] "
+                  >
+                    <p className=" hover:underline">Password recovery</p>
+                  </Link>
+                  <Link to="/registration" className="text-[#77858C] ">
+                    <p className=" mt-4 hover:underline">Registration</p>
+                  </Link>
+                </div>
+              </CardFooter>
+            </Card>
+          </div>
         </div>
-        <Card className="min-w-[312px]">
-          <CardHeader className="space-y-1">
-            <CardTitle className="text-lg text-center">Log in</CardTitle>
-          </CardHeader>
-          <CardContent className="grid gap-4">
-            <div className="grid gap-2">
-              <Input id="email" type="email" placeholder="Email" />
-            </div>
-            <div className="grid gap-2">
-              <PasswordInput
-                id="current_password"
-                value={currentPassword}
-                onChange={(e) => setCurrentPassword(e.target.value)}
-                autoComplete="current-password"
-              />
-            </div>
-          </CardContent>
-          <CardFooter className="flex flex-col">
-            <Button className="w-full" onClick={handleLogin}>
-              Login
-            </Button>
-            <div className="mt-4 text-sm text-center ">
-              <Link to="/reset-password-request" className="text-[#77858C] ">
-                <p className=" hover:underline">Password recovery</p>
-              </Link>
-              <Link to="/registration" className="text-[#77858C] ">
-                <p className=" mt-4 hover:underline">Registration</p>
-              </Link>
-            </div>
-          </CardFooter>
-        </Card>
-      </div>
-    </div>
+      )}
+    </>
   );
 }

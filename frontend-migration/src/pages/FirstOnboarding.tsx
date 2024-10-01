@@ -3,6 +3,8 @@ import imageStep1 from "../assets/onboarding/first-1.svg";
 import imageStep2 from "../assets/onboarding/first-2.svg";
 import imageStep3 from "../assets/onboarding/first-3.svg";
 import imageStep4 from "../assets/onboarding/first-4.svg";
+import useStore from "../stores/store";
+import { Link } from "react-router-dom";
 type Step = {
   id: number;
   title: string;
@@ -14,6 +16,15 @@ type Step = {
 
 const FirstOnboarding: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
+  const {
+    count,
+    increase,
+    decrease,
+    firstOnboardingComplited,
+    completeOnboarding,
+  } = useStore();
+  console.log("completeOnboarding:", completeOnboarding);
+  console.log("firstOnboardingComplited:", firstOnboardingComplited);
 
   const steps: Step[] = [
     {
@@ -55,10 +66,14 @@ const FirstOnboarding: React.FC = () => {
   ];
 
   const step = steps[currentStep];
+  console.log("currentStep:", currentStep);
 
   const nextStep = (stepIndex: number) => {
     if (stepIndex >= steps.length) {
+      console.log("stepIndex:", stepIndex);
+      console.log("steps:", steps.length);
       setCurrentStep(0);
+      completeOnboarding();
       // Handle completion logic here
     } else {
       setCurrentStep(stepIndex);
@@ -67,7 +82,6 @@ const FirstOnboarding: React.FC = () => {
 
   return (
     <div className="flex h-screen items-center">
-      <div className="flex-grow" />
       <div className="flex flex-col items-center m-4">
         <div>
           <img

@@ -9,7 +9,6 @@ import Registration from "./pages/Registration";
 import Root from "./routes/root";
 import ResetPasswordRequest from "./pages/ResetPassswordRequest";
 import ResetPasswordConfirmation from "./pages/ResetPassswordConfirmation";
-import FirstOnboarding from "./components/FirstOnboarding";
 
 const router = createBrowserRouter([
   {
@@ -39,10 +38,6 @@ const router = createBrowserRouter([
   {
     path: "/reset-password",
     element: <ResetPasswordConfirmation />,
-  },
-  {
-    path: "/first",
-    element: <FirstOnboarding />,
   },
 ]);
 

@@ -22,10 +22,10 @@ export default function Root() {
         <nav>
           <ul>
             <li>
-              <a href={`/contacts/1`}>Your Name</a>
+              <a href={`/login`}>Your login</a>
             </li>
             <li>
-              <a href={`/contacts/2`}>Your Friend</a>
+              <a href={`/registration`}>Your registration</a>
             </li>
           </ul>
         </nav>

@@ -8,6 +8,7 @@ import About from "./pages/About";
 import Login from "./pages/Login";
 import Registration from "./pages/Registration";
 import Root from "./routes/root";
+import ResetPasswordRequest from "./pages/ResetPassswordRequest";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: "/registration",
     element: <Registration />,
+  },
+  {
+    path: "/reset-password-request",
+    element: <ResetPasswordRequest />,
   },
   {
     path: "contacts/:contactId",

@@ -4,15 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { LanguageSwitcher } from "@/components/ui/language-switcher.tsx";
-import { useNavigate } from "react-router-dom";
 
 export default function ResetPassswordRequest() {
-  const navigate = useNavigate();
   const [success, setSuccess] = useState(false);
-  const handleLogin = () => {
-    navigate("/login");
-  };
-  console.log("success:", success);
+
   const handleRecoverPassword = () => {
     setSuccess(true);
   };

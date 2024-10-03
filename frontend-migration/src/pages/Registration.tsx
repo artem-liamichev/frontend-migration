@@ -14,7 +14,7 @@ import { PasswordInput } from "@/components/ui/password-input";
 import { LanguageSwitcher } from "@/components/ui/language-switcher.tsx";
 import "../styles/modal.css"; // Import your custom styles
 import axios from "axios";
-import regexPassword from "../utils/constants.ts";
+import useAuthStore from "@/stores/authStore.ts";
 
 type FormInputs = {
   email: string;
@@ -38,7 +38,9 @@ export default function AuthenticationPage() {
       "https://rarus-health-qa.uc.r.appspot.com/users",
       data
     );
-    if (response.status === 201) {
+    console.log("response:", response);
+    if (response.status === 200) {
+
       setSuccess(true);
     }
     return response.data;
@@ -71,7 +73,7 @@ export default function AuthenticationPage() {
         <LanguageSwitcher />
       </div>
       <div className="w-full m-auto lg:max-w-6xl md:flex md:gap-20">
-        {!success ? (
+        {success ? (
           <div className="flex w-[312px] text-center flex-col justify-center items-center min-h-screen overflow-hidden">
             <p className="text-green-600">
               {" "}

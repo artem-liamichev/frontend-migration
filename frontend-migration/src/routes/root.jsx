@@ -1,9 +1,17 @@
 import { Link } from "react-router-dom";
+import useAuthStore from "@/stores/authStore";
 export default function Root() {
+  const { logout, isLoggedIn } = useAuthStore();
+
+  const handleLogOut = () => {
+    console.log("logged out");
+    logout();
+  };
   return (
     <>
       <div id="sidebar">
         <h1>React Router Contacts</h1>
+        {isLoggedIn && <div>Я залогген</div>}
         <div>
           <form id="search-form" role="search">
             <input
@@ -33,6 +41,7 @@ export default function Root() {
         </nav>
       </div>
       <div id="detail"></div>
+      <button onClick={handleLogOut}>Logout</button>
     </>
   );
 }

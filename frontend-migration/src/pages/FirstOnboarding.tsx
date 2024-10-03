@@ -3,7 +3,7 @@ import imageStep1 from "../assets/onboarding/first-1.svg";
 import imageStep2 from "../assets/onboarding/first-2.svg";
 import imageStep3 from "../assets/onboarding/first-3.svg";
 import imageStep4 from "../assets/onboarding/first-4.svg";
-import useStore from "../stores/store";
+import useStore from "../stores/firstOnboardingStore";
 import { Link } from "react-router-dom";
 type Step = {
   id: number;
@@ -17,9 +17,6 @@ type Step = {
 const FirstOnboarding: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const {
-    count,
-    increase,
-    decrease,
     firstOnboardingComplited,
     completeOnboarding,
   } = useStore();
